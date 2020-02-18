@@ -21,9 +21,7 @@ import org.bson.Document;
  EJERCICIO "xerartenda" CON MONGODB Y JAVA
  */
 //IMPORTAR DRIVER DE MONGO ÚLTIMA V QUE TENGAMOS
-//USAREMOS LA CLASE "DOCUMENT" PARA ALGUNOS MÉTODOS Y "BASICDBOBJECT" PARA OTROS
 //PROBAR A PONERLOS TODOS COMO DOCUMENT, PARECE QUE SALE MEJOR
-//RICARDO PREFIERE BASICDBOBJECT
 public class Mongo_Ejer_xerartenda {
 
     //INSERCCIÓN
@@ -64,12 +62,12 @@ public class Mongo_Ejer_xerartenda {
 
         MongoCollection<Document> collection = database.getCollection("pedidos");
 
-        BasicDBObject doc = new BasicDBObject();
+        Document doc = new Document();
         doc.put("_id", "p3");
-        BasicDBObject newDoc = new BasicDBObject();
+        Document newDoc = new Document();
         newDoc.put("codpro", "pro4");
 
-        BasicDBObject updateObject = new BasicDBObject();
+        Document updateObject = new Document();
         updateObject.put("$set", newDoc);
 
         collection.updateOne(doc, updateObject);
@@ -89,11 +87,11 @@ public class Mongo_Ejer_xerartenda {
 
         MongoCollection<Document> collection = database.getCollection("pedidos");
 
-        BasicDBObject doc = new BasicDBObject();
+        Document doc = new Document();
 
-        BasicDBObject newdoc = new BasicDBObject();
+        Document newdoc = new Document();
 
-        BasicDBObject updateObject = new BasicDBObject();
+        Document updateObject = new Document();
 
         doc.put("_id", "p2");
         newdoc.put("cantidade", 7);
@@ -229,7 +227,7 @@ public class Mongo_Ejer_xerartenda {
 
         Document docFind = new Document();
         //ACORDARSE DE PONER EL FIRST !!!
-        docFind = (Document) collection.find(eq("_id","p4")).first();
+        docFind = (Document) collection.find(eq("_id", "p4")).first();
 
         int cantidadeDoblada = 2 * docFind.getInteger("cantidade");
 
@@ -240,9 +238,8 @@ public class Mongo_Ejer_xerartenda {
         Document doc3 = new Document();
 
         doc3.put("$set", doc2);
-        
+
         collection.updateOne(docFind, doc3);
-               
 
     }
 
@@ -255,7 +252,7 @@ public class Mongo_Ejer_xerartenda {
         //mostrarCampos2();
         //mostrarCampos3();
         //mostrarCampos4();
-        aumentarDoble();
+        //aumentarDoble();
 
     }
 
