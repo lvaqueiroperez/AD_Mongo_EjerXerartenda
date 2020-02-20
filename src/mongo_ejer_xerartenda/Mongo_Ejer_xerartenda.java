@@ -46,7 +46,7 @@ public class Mongo_Ejer_xerartenda {
         document.put("data", "02/02/2019");
 
         collection.insertOne(document);
-
+        mongoClient.close();
     }
 
     //ACTUALIZACIÓN
@@ -71,7 +71,7 @@ public class Mongo_Ejer_xerartenda {
         updateObject.put("$set", newDoc);
 
         collection.updateOne(doc, updateObject);
-
+        mongoClient.close();
     }
 
     //INCREMENTAR
@@ -99,7 +99,7 @@ public class Mongo_Ejer_xerartenda {
         updateObject.put("$inc", newdoc);
 
         collection.updateOne(doc, updateObject);
-
+        mongoClient.close();
     }
 
     //4) amosar o documento correspondente ao pedido p3
@@ -118,7 +118,9 @@ public class Mongo_Ejer_xerartenda {
         buscar = collection.find(eq("_id", "p3")).first();
 
         System.out.println(buscar);
-
+        
+        mongoClient.close();
+       
     }
 
     //5) amosar o codigo do cliente, o codigo do producto e a cantidade correspondentes ao pedido p1
@@ -160,7 +162,7 @@ public class Mongo_Ejer_xerartenda {
             System.out.println("CODCLI: " + codcli + " CODPRO: " + codpro);
 
         }
-
+        mongoClient.close();
     }
 
     //7) amosar  o codigo do cliente e  o codigo do producto correspondentes 
@@ -185,7 +187,7 @@ public class Mongo_Ejer_xerartenda {
             System.out.println("CODCLI: " + codcli + " CODPRO: " + codpro);
 
         }
-
+        mongoClient.close();
     }
 
     //8) amosar o codigo do cliente e  o codigo do producto correspondentes 
@@ -211,7 +213,7 @@ public class Mongo_Ejer_xerartenda {
             System.out.println("CODCLI: " + codcli + " CODPRO: " + codpro);
 
         }
-
+        mongoClient.close();
     }
 
     //9) aumentar  no seu dobre a cantidade correspondente ao pedido p4 .
@@ -240,7 +242,7 @@ public class Mongo_Ejer_xerartenda {
         doc3.put("$set", doc2);
 
         collection.updateOne(docFind, doc3);
-
+        mongoClient.close();
     }
 
     public static void main(String[] args) {
